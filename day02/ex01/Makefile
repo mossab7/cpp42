@@ -1,5 +1,5 @@
-SRCS = main.cpp 
-NAME = brain
+SRCS = main.cpp
+NAME = fixed
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
