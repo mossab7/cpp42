@@ -10,27 +10,26 @@ class Fixed
 	int fixed;
 	public :
 		static const int fraction;
+		static int toInt(const std::string &str);
+		static std::string toString(float f);
 		Fixed();
+		Fixed(float f);
 		~Fixed();
 		Fixed(const Fixed &other);
 		Fixed& operator=(const Fixed &other);
+		void operator>>();
 		int getRawBits(void);
 		void setRawBits(int const raw);
 };
 
-int to_int(const std::string& str)
+float ft_roundf(float value)
 {
-	std::istringstream iss(str);
-	int value;
-	iss >> value;
-	return value;
+	return (value >= 0.0f) ? (int)(value + 0.5f) : (int)(value - 0.5f);
 }
 
-std::string to_string(float f)
+Fixed::Fixed(float f)
 {
-	std::ostringstream oss;
-	oss << f;
-	return oss.str();
+	fixed = static_cast<int>(ft_roundf(f * (1 << fraction)));
 }
 
 #endif //FIXED_HPP
