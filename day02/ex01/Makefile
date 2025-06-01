@@ -1,4 +1,4 @@
-SRCS = main.cpp
+SRCS = main.cpp Fixed.cpp
 NAME = fixed
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
