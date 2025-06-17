@@ -16,6 +16,7 @@ Zombie &Zombie::operator=(const Zombie &other)
 	{
 		name = other.name;
 	}
+	return *this;
 }
 
 Zombie::Zombie(const Zombie &other)

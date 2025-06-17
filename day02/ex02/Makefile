@@ -1,10 +1,10 @@
-SRCS = megaphone.cpp
-NAME = megaphone
+SRCS = main.cpp Fixed.cpp
+NAME = fixed
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
 
-all : $(SRCS)
+all : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

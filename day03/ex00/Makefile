@@ -1,10 +1,11 @@
-SRCS = megaphone.cpp
-NAME = megaphone
+SRCS = main.cpp ClapTrap.cpp
+NAME = ClapTrap
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
+HEADER = ClapTrap.hpp
 
-all : $(SRCS)
+all : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :
