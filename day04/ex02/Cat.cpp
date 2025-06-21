@@ -23,8 +23,8 @@ Cat &Cat::operator=(const Cat &other) {
     return *this;
 }
 Cat::~Cat() {
-    std::cout << "Cat of type " << _type << " destroyed." << std::endl;
     delete _brain;
+    std::cout << "Cat of type " << _type << " destroyed." << std::endl;
 }
 void Cat::makeSound() const {
     std::cout << "Meow! I am a " << _type << "." <<
