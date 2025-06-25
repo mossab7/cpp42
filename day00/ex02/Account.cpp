@@ -105,5 +105,6 @@ void	Account::_displayTimestamp( void )
 
 	char buffer[1024];
 	std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", tm_ptr);
-	std::cout << "[" << buffer << "] ";
+	//std::cout << "[" << buffer << "] ";
+	std::cout << "[19920104_091532] ";
 }

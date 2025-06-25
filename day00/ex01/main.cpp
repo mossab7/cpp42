@@ -1,48 +1,92 @@
 #include "PhoneBook.hpp"
+#include <string>
+#include <sstream>
 
-void add(PhoneBook &phonebook)
+bool valid_input(std::string input, InputType type)
+{
+	for (std::string::size_type i = 0; i < input.size(); i++)
+	{
+		bool char_valid = false;
+
+		if ((type & IT_Numbers) && std::isdigit(input[i]))
+			char_valid = true;
+		if ((type & IT_Alphabet) && std::isalpha(input[i]))
+			char_valid = true;
+		if (!char_valid)
+			return false;
+	}
+	return true;
+}
+
+bool add(PhoneBook &phonebook)
 {
 	Contact			contact;
 	std::string		number;
 	std::string		name;
 	std::string		last_name;
 	std::string		nickname;
+	std::string		darkestsecret;
 
-	std::cout << "number[] :";
-	std::cin >> number;
-	std::cout << "name :";
-	std::cin >> name;
-	std::cout << "last name :";
-	std::cin >> last_name;
-	std::cout << "nickname :";
-	std::cin >> nickname;
+	do
+	{
+		std::cout << "number[] : ";
+		if (!std::getline(std::cin,number))
+			return (false);
+	} while (!valid_input(number,IT_Numbers) || number.empty());
+	do
+	{
+	std::cout << "name : ";
+	if (!std::getline(std::cin,name))
+		return (false);
+	}while (!valid_input(name,IT_Alphabet) || name.empty());
+	do
+	{
+		std::cout << "last name : ";
+		if (!std::getline(std::cin,last_name))
+			return (false);
+	}while (!valid_input(last_name,IT_Alphabet) || last_name.empty());
+	do
+	{
+		std::cout << "nickname : ";
+		if (!std::getline(std::cin,nickname))
+			return (false);
+	}while (!valid_input(nickname,(IT_Alphabet | IT_Numbers)) || nickname.empty());
+	do
+	{
+		std::cout << "darkestsecret : ";
+		if (!std::getline(std::cin,darkestsecret))
+			return (false);
+	}while (!valid_input(nickname,(IT_Alphabet | IT_Numbers)) || darkestsecret.empty());
 
 	contact.setNumber(number);
 	contact.setName(name);
 	contact.setLastName(last_name);
 	contact.setNickName(nickname);
+	contact.setDarkestSecret(darkestsecret);
 	phonebook.addContact(contact);
+	return (true);
 }
 
-void search(PhoneBook phonebook)
+bool search(PhoneBook phonebook)
 {
+	std::string input;
 	unsigned int index;
 
 	phonebook.displayContactTable();
-	std::cout << "enter index of the entry to display" << std::endl;
-	std::cout << ">";
-	std::cin >> index;
-	if (std::cin.fail())
+	do
 	{
-		std::cout << "invalid index" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(1000, '\n');
-		return;
-	}
+		std::cout << "enter index of the entry to display" << std::endl;
+		std::cout << ">";
+		if (!std::getline(std::cin,input))
+			return (false);
+	} while (!valid_input(input,IT_Numbers));
+	std::stringstream ss(input);
+	ss >> index;
 	if (index > phonebook.size)
 		std::cout << "non existent contact" << std::endl;
 	else
 		phonebook.displayContact(index);
+	return (true);
 }
 
 int main(void)
@@ -54,14 +98,18 @@ int main(void)
 	{
 		std::cout << "entre command : ADD, SEARCH, EXIT" << std::endl;
 		std::cout << "> ";
-		std::cin >> command;
-
-		if (std::cin.eof())
+		if (!std::getline(std::cin,command))
 			return (0);
 		if (command == "add" || command == "ADD")
-			add(phonebook);
+		{
+			if (!add(phonebook))
+				return (0);
+		}
 		else if (command == "search" || command == "SEARCH")
-			search(phonebook);
+		{
+			if (!search(phonebook))
+				return (0);
+		}
 		else if (command == "exit" || command == "EXIT")
 			return (0);
 		else

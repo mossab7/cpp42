@@ -1,4 +1,4 @@
-#include <iostream>
+#include "megaphone.hpp"
 
 void to_upper(std::string &str)
 {
@@ -26,4 +26,5 @@ int main(int argc, char *argv[])
 			std::cout << " ";
 	}
 	std::cout << std::endl;
+	return (0);
 }

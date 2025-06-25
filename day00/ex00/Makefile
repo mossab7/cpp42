@@ -4,7 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
 
-all : $(SRCS)
+all: $(NAME)
+
+$(NAME): $(SRCS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

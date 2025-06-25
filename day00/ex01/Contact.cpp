@@ -6,15 +6,18 @@ Contact::Contact()
 	number = "";
 	last_name = "";
 	nickmame = "";
+	darkestsecret = "";
 }
 
 Contact::Contact(std::string num, const std::string &n,
-	        const std::string &ln, const std::string &nk)
+			const std::string &ln, const std::string &nk,
+			const std::string &ds)
 {
 	number = num;
 	name = n;
 	last_name = ln;
 	nickmame = nk;
+	darkestsecret = ds;
 }
 
 Contact::Contact(const Contact &other)
@@ -23,8 +26,10 @@ Contact::Contact(const Contact &other)
 	name = other.name;
 	last_name = other.last_name;
 	nickmame = other.nickmame;
+	darkestsecret = other.darkestsecret;
 }
- Contact& Contact::operator=(const Contact &other)
+
+Contact& Contact::operator=(const Contact &other)
 {
 	if (this != &other)
 	{
@@ -32,6 +37,7 @@ Contact::Contact(const Contact &other)
 		name = other.name;
 		last_name = other.last_name;
 		nickmame = other.nickmame;
+		darkestsecret = other.darkestsecret;
 	}
 	return *this;
 }
@@ -47,6 +53,7 @@ void	Contact::printContactInfo()
 	std::cout << "Name: " << name << std::endl;
 	std::cout << "Last Name: " << last_name << std::endl;
 	std::cout << "nickmame: " << nickmame << std::endl;
+	std::cout << "darkestsecret: " << darkestsecret << std::endl;
 }
 
 void	Contact::setNumber(const std::string &num)
@@ -64,9 +71,14 @@ void	Contact::setLastName(const std::string &ln)
 	last_name = ln;
 }
 
-void	Contact::setNickName(const std::string &addr)
+void	Contact::setNickName(const std::string &nk)
 {
-	nickmame = addr;
+	nickmame = nk;
+}
+
+void	Contact::setDarkestSecret(const std::string &ds)
+{
+	darkestsecret = ds;
 }
 
 std::string		Contact::getNumber()
@@ -87,4 +99,9 @@ std::string		Contact::getLastName()
 std::string		Contact::getNickname()
 {
 	return (nickmame);
+}
+
+std::string		Contact::getDarkestSecret()
+{
+	return (darkestsecret);
 }

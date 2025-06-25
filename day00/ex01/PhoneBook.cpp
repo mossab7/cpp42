@@ -58,6 +58,7 @@ void PhoneBook::displayContactTable()
 			  << "|" << std::setw(WIDTH_ALIGNMENT) << "First Name"
 			  << "|" << std::setw(WIDTH_ALIGNMENT) << "Last Name"
 			  << "|" << std::setw(WIDTH_ALIGNMENT) << "Nickname"
+			  << "|" << std::setw(WIDTH_ALIGNMENT) << "DarkestSe."
 			  << "|\n";
 
 
@@ -68,6 +69,17 @@ void PhoneBook::displayContactTable()
 		print_column_field(contacts[i].getName());
 		print_column_field(contacts[i].getLastName());
 		print_column_field(contacts[i].getNickname());
+		print_column_field(contacts[i].getDarkestSecret());
 		std::cout << "\n";
 	}
+}
+
+InputType operator|(InputType a, InputType b)
+{
+	return static_cast<InputType>(static_cast<int>(a) | static_cast<int>(b));
+}
+
+bool operator&(InputType a, InputType b)
+{
+	return (static_cast<int>(a) & static_cast<int>(b)) != 0;
 }

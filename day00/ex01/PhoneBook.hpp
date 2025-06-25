@@ -5,8 +5,18 @@
 #include <iomanip>
 #include "Contact.hpp"
 
-#define CONTACTS_CAP 1
+#define CONTACTS_CAP 2
 #define WIDTH_ALIGNMENT 10
+
+enum InputType
+{
+	IT_None = 0,
+	IT_Alphabet = 1 << 0,
+	IT_Numbers = 1 << 1
+};
+
+InputType operator|(InputType a, InputType b);
+bool operator&(InputType a, InputType b);
 
 class PhoneBook
 {
@@ -31,5 +41,9 @@ class PhoneBook
 
 		~PhoneBook() {}
 };
+
+bool search(PhoneBook phonebook);
+bool add(PhoneBook &phonebook);
+void print_column_field(const std::string &str);
 
 #endif // PHONEBOOK_HPP

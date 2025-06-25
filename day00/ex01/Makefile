@@ -5,7 +5,8 @@ CC = c++ -std=c++98
 RM = rm -rf
 HEADERS = Contact.hpp PhoneBook.hpp
 
-all : $(SRCS) $(HEADERS)
+all : $(NAME)
+$(NAME) : $(SRCS) $(HEADERS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :
