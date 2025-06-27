@@ -5,7 +5,9 @@ CC = c++ -std=c++98
 RM = rm -rf
 HEADER = Cure.hpp Ice.hpp AMateria.hpp Character.hpp MateriaSource.hpp AMateria.hpp ICharacter.hpp
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+
+$(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

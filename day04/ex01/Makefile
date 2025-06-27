@@ -5,7 +5,9 @@ CC = c++ -std=c++98
 RM = rm -rf
 HEADER = Dog.hpp Cat.hpp Animal.hpp Brain.hpp
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+
+$(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :
