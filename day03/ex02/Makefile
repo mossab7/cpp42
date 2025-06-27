@@ -5,7 +5,8 @@ CC = c++ -std=c++98
 RM = rm -rf
 HEADER = ClapTrap.hpp FragTrap.hpp
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+$(NAME) $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

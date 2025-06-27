@@ -1,10 +1,12 @@
-SRCS = main.cpp 
+SRCS = main.cpp
 NAME = brain
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+
+$(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

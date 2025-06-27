@@ -3,8 +3,10 @@ NAME = fixed
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
+HEADER = Fixed.hpp
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+$(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

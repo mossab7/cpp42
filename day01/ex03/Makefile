@@ -5,7 +5,9 @@ CC = c++ -std=c++98
 RM = rm -rf
 HEADER = HumanA.hpp HumanB.hpp Weapon.hpp
 
-all : $(SRCS) $(HEADER)
+all : $(NAME)
+
+$(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :

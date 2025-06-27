@@ -23,14 +23,10 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-	std::string levels[4];
+	std::string levels[4] = {"debug", "info", "warning", "error"};
 	int i;
 	bool found;
 
-	levels[0] = "debug";
-	levels[1] = "info";
-	levels[2] = "warning";
-	levels[3] = "error";
 	found = false;
 	for (i = 0; i < 4; i++)
 	{

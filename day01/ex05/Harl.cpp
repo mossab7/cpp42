@@ -23,20 +23,11 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-	announcer announcers[4];
-	std::string levels[4];
+	announcer announcers[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string levels[4] = {"debug", "info", "warning", "error"};
 	int i;
 	bool found;
 
-	announcers[0] = &Harl::debug;
-	announcers[1] = &Harl::info;
-	announcers[2] = &Harl::warning;
-	announcers[3] = &Harl::error;
-
-	levels[0] = "debug";
-	levels[1] = "info";
-	levels[2] = "warning";
-	levels[3] = "error";
 	found = false;
 	for (i = 0; i < 4; i++)
 	{

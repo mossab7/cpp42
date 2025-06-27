@@ -16,7 +16,6 @@ class Fixed
 		~Fixed();
 		Fixed(const Fixed &other);
 		Fixed& operator=(const Fixed &other);
-		friend std::ostream& operator<<(std::ostream& os, const Fixed& ref);
 		bool operator>(const Fixed &other) const;
 		bool operator<(const Fixed &other) const;
 		bool operator>=(const Fixed &other) const;
@@ -44,5 +43,7 @@ class Fixed
 		static Fixed& max(Fixed &a, Fixed &b);
 		static Fixed& max(const Fixed &a, const Fixed &b);
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& ref);
 
 #endif //FIXED_HPP

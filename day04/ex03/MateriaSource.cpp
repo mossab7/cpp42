@@ -15,10 +15,8 @@ MateriaSource::~MateriaSource()
 MateriaSource::MateriaSource(const MateriaSource &other) : _size(other._size)
 {
     std::cout << "MateriaSource copy constructor called" << std::endl;
-    // Initialize all elements to NULL first
     for (size_t i = 0; i < 4; ++i)
         _materias[i] = NULL;
-    // Then clone the elements that exist
     for (size_t i = 0; i < _size; ++i)
         if (other._materias[i])
             _materias[i] = other._materias[i]->clone();
@@ -41,7 +39,7 @@ void MateriaSource::learnMateria(AMateria *m)
     {
         _materias[_size] = m->clone();
         _size++;
-        delete m; 
+        delete m;
     }
     else if (m)
     {

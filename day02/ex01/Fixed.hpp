@@ -16,12 +16,12 @@ class Fixed
 		~Fixed();
 		Fixed(const Fixed &other);
 		Fixed& operator=(const Fixed &other);
-		friend std::ostream& operator<<(std::ostream& os, const Fixed& ref);
 		float toFloat(void) const;
 		int toInt(void) const;
 		int getRawBits(void);
 		void setRawBits(int const raw);
 };
 
+std::ostream& operator<<(std::ostream& os, const Fixed& ref);
 
 #endif //FIXED_HPP

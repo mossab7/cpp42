@@ -15,12 +15,12 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 }
 
 
-int main( void ) 
+int main( void )
 {
-	Point a(Fixed(0), Fixed(0));
-	Point b(Fixed(5), Fixed(0));
-	Point c(Fixed(2.5), Fixed(5));
-	Point point(Fixed(2.5), Fixed(2));
+	Point a(Fixed(-1), Fixed(0));
+	Point b(Fixed(1), Fixed(0));
+	Point c(Fixed(0), Fixed(1));
+	Point point(Fixed(0), Fixed(1));
 
 	if (bsp(a, b, c, point))
 		std::cout << "Point is inside the triangle." << std::endl;
