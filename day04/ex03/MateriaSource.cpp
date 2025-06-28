@@ -30,6 +30,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 		_size = other._size;
 		for (size_t i = 0; i < _size; ++i)
 			_materias[i] = other._materias[i]->clone();
+		for (size_t i = _size; i < MATERIA_SLOTS; ++i)
+			_materias[i] = NULL;
 	}
 	return *this;
 }

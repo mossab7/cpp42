@@ -27,6 +27,8 @@ int main()
 
 	me->unequip(0);
 	me->use(0, *bob);
+	bob->equip(tmp);
+	bob->use(0, *me);
 
 	delete bob;
 	delete me;

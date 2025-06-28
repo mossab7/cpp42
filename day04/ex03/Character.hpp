@@ -5,7 +5,15 @@
 #include "AMateria.hpp"
 
 #define MATERIA_MAX 4
-#define TRACKED_MAX 100
+#define INIT_CAP 100
+#define CAP_FACTOR 2
+
+typedef struct s_trackedMateria
+{
+	AMateria **items;
+	size_t size;
+	size_t cap;
+} t_trackedMateria;
 
 class Character : public ICharacter
 {
@@ -13,8 +21,8 @@ private:
 	std::string _name;
 	AMateria *inventory[MATERIA_MAX];
 	size_t _size;
-	AMateria *_trackedMatiria[TRACKED_MAX];
-	size_t _trackedMtSize;
+	static t_trackedMateria _trackedMatiria;
+	static size_t _refcount;
 	void _addTrackedMatiria(AMateria *m);
 
 public:
