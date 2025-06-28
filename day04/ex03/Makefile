@@ -1,7 +1,7 @@
 SRCS = main.cpp Cure.cpp Ice.cpp AMateria.cpp Character.cpp MateriaSource.cpp
 NAME = MateriaSource
 FLAGS = -Wall -Wextra -Werror
-CC = c++ -std=c++98
+CC = c++ -std=c++98 -g
 RM = rm -rf
 HEADER = Cure.hpp Ice.hpp AMateria.hpp Character.hpp MateriaSource.hpp AMateria.hpp ICharacter.hpp
 

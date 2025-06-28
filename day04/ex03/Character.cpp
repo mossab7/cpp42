@@ -40,8 +40,7 @@ Character &Character::operator=(const Character &other)
 			else
 				inventory[i] = NULL;
 		}
-		
-		// Initialize remaining slots to NULL
+
 		for (size_t i = _size; i < MATERIA_MAX; i++)
 			inventory[i] = NULL;
 	}
@@ -60,12 +59,12 @@ void Character::_addTrackedMatiria(AMateria *m)
 	{
 		size_t newCap = _trackedMatiria.cap == 0 ? INIT_CAP : _trackedMatiria.cap * CAP_FACTOR;
 		AMateria **newItems = new AMateria*[newCap];
-		
+
 		for (size_t i = 0; i < _trackedMatiria.size; i++)
 			newItems[i] = _trackedMatiria.items[i];
 		for (size_t i = _trackedMatiria.size; i < newCap; i++)
 			newItems[i] = NULL;
-		
+
 		if (_trackedMatiria.items)
 			delete[] _trackedMatiria.items;
 		_trackedMatiria.items = newItems;
@@ -87,9 +86,8 @@ Character::~Character()
 	}
 	if (_refcount > 0)
 		return;
-	if (_trackedMatiria.items)
+	if (_trackedMatiria.size > 0)
 	{
-		// Delete all tracked materias before deleting the array
 		for (size_t i = 0; i < _trackedMatiria.size; i++)
 		{
 			if (_trackedMatiria.items[i])
@@ -151,8 +149,18 @@ void Character::equip(AMateria *m)
 {
 	if (_size >= MATERIA_MAX)
 	{
-		std::cout << _name << " slots are full" << std::endl;
+		_addTrackedMatiria(m);
 		return;
+	}
+	for (size_t i = 0; i < _trackedMatiria.size; i++)
+	{
+		if (m == _trackedMatiria.items[i])
+		{
+			for (size_t j = i; j < _trackedMatiria.size; j++)
+			{
+				_trackedMatiria.items[j] = _trackedMatiria.items[j + 1];
+			}
+		}
 	}
 	inventory[_size] = m;
 	_size++;
@@ -166,8 +174,7 @@ void Character::unequip(int idx)
 	AMateria *unequipped = inventory[idx];
 	if (unequipped != NULL)
 		_addTrackedMatiria(unequipped);
-	
-	// Shift remaining items to fill the gap
+
 	for (size_t i = idx; i < _size - 1; i++)
 		inventory[i] = inventory[i + 1];
 	inventory[_size - 1] = NULL;

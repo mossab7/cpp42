@@ -25,8 +25,8 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
-	me->unequip(0);
-	me->use(0, *bob);
+	me->unequip(1);
+	me->use(1, *bob);
 	bob->equip(tmp);
 	bob->use(0, *me);
 
@@ -36,3 +36,5 @@ int main()
 
 	return 0;
 }
+
+
