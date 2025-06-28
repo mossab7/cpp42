@@ -15,5 +15,11 @@ int main()
         animals[i]->makeSound();
         delete animals[i];
     }
+
+    Dog dog;
+    {
+        Dog tmp = dog;
+    }
+
     return 0;
 }

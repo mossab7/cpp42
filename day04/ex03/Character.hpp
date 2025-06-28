@@ -4,21 +4,23 @@
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
 
-#define MATIRIA_MAX 100
+#define MATERIA_MAX 4
+#define TRACKED_MAX 100
 
 class Character : public ICharacter
 {
 private:
 	std::string _name;
-	AMateria *inventory[MATIRIA_MAX];
+	AMateria *inventory[MATERIA_MAX];
 	size_t _size;
-	AMateria *_trackedMatiria[100];
+	AMateria *_trackedMatiria[TRACKED_MAX];
 	size_t _trackedMtSize;
 	void _addTrackedMatiria(AMateria *m);
 
 public:
 	Character();
 	Character(const std::string &name);
+	Character(const Character &other);
 	~Character();
 	Character &operator=(const Character &other);
 	std::string const &getName() const;

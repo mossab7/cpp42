@@ -1,7 +1,8 @@
-#ifndef BARIN_HPP
-#define BARIN_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include <iostream>
+#include <string>
 
 class Brain
 {
@@ -18,4 +19,4 @@ public:
 	std::string getIdea(int index) const;
 };
 
-#endif // BARIN_HPP
+#endif // BRAIN_HPP

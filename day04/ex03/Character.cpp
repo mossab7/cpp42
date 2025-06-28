@@ -36,16 +36,16 @@ void Character::_addTrackedMatiria(AMateria *m)
 			return;
 	}
 
-	if (_trackedMtSize >= MATIRIA_MAX)
+	if (_trackedMtSize >= TRACKED_MAX)
 	{
 		delete _trackedMatiria[0];
 
-		for (size_t i = 0; i < MATIRIA_MAX - 1; i++)
+		for (size_t i = 0; i < TRACKED_MAX - 1; i++)
 		{
 			_trackedMatiria[i] = _trackedMatiria[i + 1];
 		}
 
-		_trackedMtSize = MATIRIA_MAX - 1;
+		_trackedMtSize = TRACKED_MAX - 1;
 	}
 
 	_trackedMatiria[_trackedMtSize] = m;
@@ -72,10 +72,10 @@ Character::Character()
 	std::cout << "character constructor is called for " << _name << std::endl;
 	_size = 0;
 	_trackedMtSize = 0;
-	_name = "defulat";
-	for (size_t i = 0; i < 4; i++)
+	_name = "default";
+	for (size_t i = 0; i < MATERIA_MAX; i++)
 		inventory[i] = NULL;
-	for (size_t i = 0; i < MATIRIA_MAX; i++)
+	for (size_t i = 0; i < TRACKED_MAX; i++)
 		_trackedMatiria[i] = NULL;
 }
 
@@ -85,10 +85,32 @@ Character::Character(const std::string &name)
 	_size = 0;
 	_trackedMtSize = 0;
 	std::cout << "character constructor is called for " << _name << std::endl;
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < MATERIA_MAX; i++)
 		inventory[i] = NULL;
-	for (size_t i = 0; i < MATIRIA_MAX; i++)
+	for (size_t i = 0; i < TRACKED_MAX; i++)
 		_trackedMatiria[i] = NULL;
+}
+
+Character::Character(const Character &other)
+{
+	_name = other._name;
+	_size = 0;
+	_trackedMtSize = 0;
+	std::cout << "character copy constructor is called for " << _name << std::endl;
+
+	for (size_t i = 0; i < MATERIA_MAX; i++)
+		inventory[i] = NULL;
+	for (size_t i = 0; i < TRACKED_MAX; i++)
+		_trackedMatiria[i] = NULL;
+
+	for (size_t i = 0; i < other._size; i++)
+	{
+		if (other.inventory[i])
+		{
+			inventory[i] = other.inventory[i]->clone();
+			_size++;
+		}
+	}
 }
 
 std::string const &Character::getName() const
@@ -98,9 +120,9 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
-	if (_size >= 4)
+	if (_size >= MATERIA_MAX)
 	{
-		std::cout << _name << " slotes are full" << std::endl;
+		std::cout << _name << " slots are full" << std::endl;
 		return;
 	}
 	inventory[_size] = m;

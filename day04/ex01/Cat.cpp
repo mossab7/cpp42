@@ -14,11 +14,22 @@ Cat::Cat(const std::string &type) : Animal(type) {
 ::endl;
 }
 Cat::Cat(const Cat &other) : Animal(other) {
+    _brain = new Brain(*other._brain);
+    if (!_brain) {
+        std::cerr << "Memory allocation failed for Brain." << std::endl;
+        exit(EXIT_FAILURE);
+    }
     std::cout << "Cat copied." << std::endl;
 }
 Cat &Cat::operator=(const Cat &other) {
     if (this != &other) {
         Animal::operator=(other);
+        delete _brain;
+        _brain = new Brain(*other._brain);
+        if (!_brain) {
+            std::cerr << "Memory allocation failed for Brain." << std::endl;
+            exit(EXIT_FAILURE);
+        }
     }
     return *this;
 }
