@@ -1,25 +1,33 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-
 int main()
 {
-    Animal *animals[10];
-    for (int i = 0; i < 5; ++i) {
-        animals[i] = new Dog();
-    }
-    for (int i = 5; i < 10; ++i) {
-        animals[i] = new Cat();
-    }
-    for (int i = 0; i < 10; ++i) {
-        animals[i]->makeSound();
-        delete animals[i];
-    }
+	Animal *animals[10];
+	for (int i = 0; i < 5; ++i)
+	{
+		animals[i] = new Dog();
+	}
+	for (int i = 5; i < 10; ++i)
+	{
+		animals[i] = new Cat();
+	}
 
-    Dog dog;
-    {
-        Dog tmp = dog;
-    }
+	{
+		Dog tmp = *(Dog *)animals[0];
+		tmp.makeSound();
+	}
 
-    return 0;
+	{
+		Cat tmp(*(Cat *)animals[5]);
+		tmp.makeSound();
+	}
+
+	for (int i = 0; i < 10; ++i)
+	{
+		animals[i]->makeSound();
+		delete animals[i];
+	}
+
+	return 0;
 }

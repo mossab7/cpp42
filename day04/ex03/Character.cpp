@@ -152,6 +152,8 @@ void Character::equip(AMateria *m)
 		_addTrackedMatiria(m);
 		return;
 	}
+	if (!m)
+		return;
 	for (size_t i = 0; i < _trackedMatiria.size; i++)
 	{
 		if (m == _trackedMatiria.items[i])
