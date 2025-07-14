@@ -24,12 +24,7 @@ Cat::Cat(const Cat &other) : Animal(other) {
 Cat &Cat::operator=(const Cat &other) {
     if (this != &other) {
         Animal::operator=(other);
-        delete _brain;
-        _brain = new Brain(*other._brain);
-        if (!_brain) {
-            std::cerr << "Memory allocation failed for Brain." << std::endl;
-            exit(EXIT_FAILURE);
-        }
+        *_brain = *other._brain;
     }
     return *this;
 }
