@@ -1,9 +1,9 @@
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp
-NAME = AForm
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
+NAME = Form
 FLAGS = -Wall -Wextra -Werror
 CC = c++ -std=c++98
 RM = rm -rf
-HEADER = Bureaucrat.hpp AForm.hpp
+HEADER = Bureaucrat.hpp Form.hpp
 
 all : $(NAME)
 
