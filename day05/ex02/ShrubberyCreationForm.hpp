@@ -40,7 +40,34 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::executeForm() const
 {
-	ofstream file();
+    std::ofstream ofs(target + "_shrubbery");
+    if (!ofs)
+    {
+        std::cout << "Error: Could not open file " << target << "_shrubbery" << std::endl;
+        return;
+    }
+    ofs << "       _-_\n";
+    ofs << "    /~~   ~~\\\n";
+    ofs << " /~~         ~~\\\n";
+    ofs << "{               }\n";
+    ofs << " \\  _-     -_  /\n";
+    ofs << "   ~  \\\\ //  ~\n";
+    ofs << "_- -   | | _- _\n";
+    ofs << "  _ -  | |   -_\n";
+    ofs << "      // \\\\\n";
+    ofs << "     //   \\\\\n";
+    ofs << "    //     \\\\\n";
+    ofs << "   //       \\\\\n";
+    ofs << "  //         \\\\\n";
+    ofs << " //           \\\\\n";
+    ofs << "//             \\\\\n";
+    ofs << "       |||\n";
+    ofs << "       |||\n";
+    ofs << "       |||\n";
+    ofs << "   ___________\n";
+    ofs.close();
+    std::cout << "ShrubberyCreationForm executed successfully." << std::endl;
+    return;
 }
 
 #endif //SHRUBBERYCREATIONFORM_HPP
