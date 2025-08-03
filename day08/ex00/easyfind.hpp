@@ -8,9 +8,9 @@ typename Container::iterator easyfind(Container& container, int val)
     for (auto iter = container.begin(); iter != container.end(); ++iter)
     {
         if (*iter == val)
-            return iter;
+            return (iter);
     }
-    return container.end();
+    return (container.end());
 }
 
 
