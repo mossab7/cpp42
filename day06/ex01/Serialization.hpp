@@ -5,43 +5,44 @@
 #include <sstream>
 #include <string>
 
+typedef unsigned long long uintptr_t;
+
 class Data
 {
-    public:
-        int value;
+public:
+	int value;
 };
 
-class Serialization 
-{  
+class Serialization
+{
 public:
-    Serialization();
-    Serialization(const Serialization &other);
-    ~Serialization();
-    Serialization &operator=(const Serialization &other);
+	Serialization();
+	Serialization(const Serialization &other);
+	~Serialization();
+	Serialization &operator=(const Serialization &other);
 
-    static uintptr_t serialize(Data *ptr);
-    static Data *deserialize(uintptr_t raw);
+	static uintptr_t serialize(Data *ptr);
+	static Data *deserialize(uintptr_t raw);
 };
 
 Serialization::Serialization() {}
-Serialization::Serialization(const Serialization &other) 
+Serialization::Serialization(const Serialization &other)
 {
-    (void)other;
+	(void)other;
 }
 Serialization::~Serialization() {}
 Serialization &Serialization::operator=(const Serialization &other)
 {
-    (void)other;
-    return *this;
+	(void)other;
+	return *this;
 }
-uintptr_t Serialization::serialize(Data *ptr) 
+uintptr_t Serialization::serialize(Data *ptr)
 {
-    return reinterpret_cast<uintptr_t>(ptr);
+	return reinterpret_cast<uintptr_t>(ptr);
 }
-Data *Serialization::deserialize(uintptr_t raw) 
+Data *Serialization::deserialize(uintptr_t raw)
 {
-    return reinterpret_cast<Data *>(raw);
+	return reinterpret_cast<Data *>(raw);
 }
-      
 
 #endif // SERIALIZATION_HPP

@@ -1,12 +1,25 @@
 #include "Span.hpp"
 
-
-int main(void)
+int main()
 {
-    Span span(10);
-
-    span.addRange(9);
-    std::cout << span.longestSpan() << std::endl;
-    std::cout << span.shortestSpan() << std::endl;
-
+	Span sp = Span(5);
+	std::vector<int> vec = {5,3,1,6,8};
+	sp.addNumber(vec.begin(),vec.end());
+	// try {
+	// 	sp.addNumber(16);
+	// }
+	// catch(std::exception &err)
+	// {
+	// 	std::cout << err.what() << std::endl;
+	// }
+	// try {
+	// 	sp.addRange(16);
+	// }
+	// catch(std::exception &err)
+	// {
+	// 	std::cout << err.what() << std::endl;
+	// }
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+	return (0);
 }

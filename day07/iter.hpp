@@ -3,15 +3,10 @@
 
 #include <iostream>
 
-template<typename T,typename F>
+template <typename T, typename F>
 
-void iter(T *arr, size_t size, F f)
-{
+void iter(T *arr, size_t size, F f);
 
-    for (size_t i  = 0; i < size; i++)
-    {
-        f(arr[i]);        
-    }
-}
+#include "iter.tpp"
 
-#endif //ITER_HPP
+#endif // ITER_HPP
