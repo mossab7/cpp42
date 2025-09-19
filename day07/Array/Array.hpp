@@ -1,7 +1,29 @@
-#ifndef ARRAY_TPP
-#define ARRAY_TPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <stdexcept>
+
+template <typename T>
+class Array
+{
+private:
+	T *array;
+	unsigned int _size;
+
+	T *dupArray(const Array &other);
+
+public:
+	Array();
+	Array(unsigned int size);
+	Array(const Array &other);
+	Array &operator=(const Array &other);
+	~Array();
+
+	T &operator[](int index);
+	const T &operator[](int index) const;
+
+	unsigned int size() const;
+};
 
 template <typename T>
 T *Array<T>::dupArray(const Array &other)
@@ -15,7 +37,7 @@ T *Array<T>::dupArray(const Array &other)
 }
 
 template <typename T>
-Array<T>::Array() : array(nullptr), _size(0) {}
+Array<T>::Array() : array(NULL), _size(0) {}
 
 template <typename T>
 Array<T>::Array(unsigned int size) : _size(size)
@@ -70,4 +92,4 @@ unsigned int Array<T>::size() const
 	return _size;
 }
 
-#endif // ARRAY_TPP
+#endif // ARRAY_HPP

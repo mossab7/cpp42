@@ -5,13 +5,9 @@
 #include <sstream>
 #include <string>
 
-typedef unsigned long long uintptr_t;
+#include "Data.hpp"
 
-class Data
-{
-public:
-	int value;
-};
+typedef unsigned long long uintptr_t;
 
 class Serialization
 {
@@ -25,24 +21,5 @@ public:
 	static Data *deserialize(uintptr_t raw);
 };
 
-Serialization::Serialization() {}
-Serialization::Serialization(const Serialization &other)
-{
-	(void)other;
-}
-Serialization::~Serialization() {}
-Serialization &Serialization::operator=(const Serialization &other)
-{
-	(void)other;
-	return *this;
-}
-uintptr_t Serialization::serialize(Data *ptr)
-{
-	return reinterpret_cast<uintptr_t>(ptr);
-}
-Data *Serialization::deserialize(uintptr_t raw)
-{
-	return reinterpret_cast<Data *>(raw);
-}
 
 #endif // SERIALIZATION_HPP
