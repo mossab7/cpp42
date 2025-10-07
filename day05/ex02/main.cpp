@@ -1,12 +1,13 @@
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 int main(void)
 {
 	Bureaucrat b1("John", 50);
 	Bureaucrat b2("Jane", 30);
 
-	Form form1("Form1", 40, 100);
-	Form form2("Form2", 60, 30);
+	AForm form1("Form1", 40, 100);
+	AForm form2("Form2", 60, 30);
 
 	std::cout << b1 << std::endl;
 	std::cout << b2 << std::endl;

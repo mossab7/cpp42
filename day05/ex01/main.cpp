@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 int main(void)
 {
@@ -37,4 +38,8 @@ int main(void)
 	{
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
+
+	b1.SignForm(form1);
+	b2.SignForm(form2);
+	return 0;
 }

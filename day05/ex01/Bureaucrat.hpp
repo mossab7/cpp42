@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+class Form;
 class Bureaucrat
 {
 private:
@@ -19,6 +20,7 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
+	void SignForm(Form &form);
 	class GradeTooHighException : public std::logic_error
 	{
 	public:
@@ -32,5 +34,6 @@ public:
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
+
 
 #endif // BUREAUCRAT_HPP

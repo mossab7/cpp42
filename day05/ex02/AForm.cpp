@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm(const std::string &name, int signGrade, int executeGrade)
 	: name(name), isSigned(false), signGrade(signGrade), executeGrade(executeGrade)
