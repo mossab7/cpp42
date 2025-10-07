@@ -24,7 +24,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 void RobotomyRequestForm::executeForm() const
 {
     srand(time(0));
-    if (rand() % 10 < 5)
+    if ((rand() % 10) < 5)
     {
         std::cout << "Bzzzz... " << target << " has been robotomized successfully!" << std::endl;
     }

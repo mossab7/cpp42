@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-
 class AForm;
 
 class Bureaucrat
@@ -23,6 +22,7 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 	void executeForm(AForm const &form);
+	void signForm(AForm &form) const;
 	class GradeTooHighException : public std::logic_error
 	{
 	public:
@@ -34,18 +34,6 @@ public:
 		GradeTooLowException(const std::string &msg);
 	};
 };
-
-void Bureaucrat::executeForm(AForm const &form)
-{
-	try
-	{
-		form.execute(*this);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-}
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 

@@ -1,41 +1,92 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void)
 {
-	Bureaucrat b1("John", 50);
-	Bureaucrat b2("Jane", 30);
-
-	AForm form1("Form1", 40, 100);
-	AForm form2("Form2", 60, 30);
-
-	std::cout << b1 << std::endl;
-	std::cout << b2 << std::endl;
-
-	try
+	std::cout << "/*------------------------------------------------------------*/" << std::endl;
 	{
-		Bureaucrat b3("Invalid", 0);
+		Bureaucrat john("John", 1);
+		AForm *form;
+		form = new PresidentialPardonForm("TopSecret");
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		for (int i = 0; i < PPF_SIGN_GRADE; i++)
+			john.decrementGrade();
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		delete form;
 	}
-	catch (std::exception &e)
+	std::cout << "/*------------------------------------------------------------*/" << std::endl;
 	{
-		std::cerr << "Exception: " << e.what() << std::endl;
+		Bureaucrat john("John", 1);
+		AForm *form;
+		form = new ShrubberyCreationForm("TopSecret");
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		for (int i = 0; i < SCF_SIGN_GRADE; i++)
+			john.decrementGrade();
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		delete form;
 	}
-
-	try
+	std::cout << "/*------------------------------------------------------------*/" << std::endl;
 	{
-		form1.beSigned(b1);
+		Bureaucrat john("John", 1);
+		AForm *form;
+		form = new RobotomyRequestForm("TopSecret");
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		for (int i = 0; i < RRF_SIGN_GRADE; i++)
+			john.decrementGrade();
+		try
+		{
+			john.signForm(*form);
+			john.executeForm(*form);
+		}
+		catch (const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		delete form;
 	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-
-	try
-	{
-		form2.beSigned(b2);
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
+	std::cout << "/*------------------------------------------------------------*/" << std::endl;
+	return (0);
 }

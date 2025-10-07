@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm(const std::string &name, int signGrade, int executeGrade)
 	: name(name), isSigned(false), signGrade(signGrade), executeGrade(executeGrade)
@@ -56,7 +57,7 @@ void AForm::execute(Bureaucrat const & executor) const
 	}
 	else
 	{
-		throw (GradeTooLowException("grade too low"));
+		throw (GradeTooLowException(executor.getName() + " couldn't execute " + name + " because grade too low"));
 	}
 }
 AForm::GradeTooHighException::GradeTooHighException(const std::string &msg)
