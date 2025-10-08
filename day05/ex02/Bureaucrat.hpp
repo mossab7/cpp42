@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 
+#define GRADE_MIN 150
+#define GRADE_MAX 1
+
 class AForm;
 
 class Bureaucrat

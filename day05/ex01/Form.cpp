@@ -4,9 +4,9 @@
 Form::Form(const std::string &name, int signGrade, int executeGrade)
 	: name(name), isSigned(false), signGrade(signGrade), executeGrade(executeGrade)
 {
-	if (signGrade < 1 || executeGrade < 1)
+	if (signGrade < GRADE_MAX || executeGrade < GRADE_MAX)
 		throw GradeTooHighException("Grade too high");
-	if (signGrade > 150 || executeGrade > 150)
+	if (signGrade > GRADE_MIN || executeGrade > GRADE_MIN)
 		throw GradeTooLowException("Grade too low");
 }
 
@@ -53,3 +53,13 @@ Form::GradeTooHighException::GradeTooHighException(const std::string &msg)
 	: std::logic_error(msg) {}
 Form::GradeTooLowException::GradeTooLowException(const std::string &msg)
 	: std::logic_error(msg) {}
+
+std::ostream &operator<<(std::ostream &os, const Form &form)
+{
+	os << "Form: " << form.getName()
+		<< "\nSign Grade: " << form.getSignGrade()
+		<< "\nExecute Grade: " << form.getExecuteGrade()
+		<< "\nStatus: " << (form.getIsSigned() ? "Signed" : "Not signed");
+
+	return os;
+}

@@ -39,6 +39,8 @@ int main(void)
 		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
+	std::cout << form1 << std::endl;
+	std::cout << form2 << std::endl;
 	b1.SignForm(form1);
 	b2.SignForm(form2);
 	return 0;

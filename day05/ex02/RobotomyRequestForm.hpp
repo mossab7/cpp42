@@ -4,8 +4,8 @@
 #include "AForm.hpp"
 #include <bits/stdc++.h>
 
-#define RRF_SIGN_GRADE 72
-#define RRF_EXEC_GRADE 45
+#define RR_SIGN_GRADE 72
+#define RR_EXEC_GRADE 45
 
 
 class RobotomyRequestForm : public AForm
@@ -19,7 +19,5 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 		void executeForm() const;
 };
-
-
 
 #endif //ROBOTOMYREQUESTFORM_HPP

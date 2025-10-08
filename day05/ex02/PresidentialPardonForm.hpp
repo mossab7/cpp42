@@ -4,8 +4,8 @@
 #include "AForm.hpp"
 #include <bits/stdc++.h>
 
-#define PPF_SIGN_GRADE 25
-#define PPF_EXEC_GRADE 5
+#define PP_SIGN_GRADE 25
+#define PP_EXEC_GRADE 5
 
 
 class PresidentialPardonForm : public AForm
