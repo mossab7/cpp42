@@ -17,27 +17,29 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 void print_char(const std::string &literal)
 {
-    std::istringstream iss(literal);
-    int value;
-    if ((iss >> value))
-    {
-        char c = static_cast<char>(value);
-        if (isprint(c))
-            std::cout << "char: '" << c << "'" << std::endl;
-        else
-            std::cout << "char: Non displayable" << std::endl;
-        return;
-    }
-    std::cout << "char: impossible" << std::endl;
-    return;
+	std::istringstream iss(literal);
+	int value;
+
+	if ((iss >> value))
+	{
+		char c = static_cast<char>(value);
+		if (isprint(c))
+			std::cout << "char: '" << c << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+		return;
+	}
+	std::cout << "char: impossible" << std::endl;
+	return;
 }
 
 void print_int(const std::string &literal)
 {
 	std::istringstream iss(literal);
-	
+
 	int value;
-	if (iss >> value)
+	iss >> value;
+	if (iss.eof() && !iss.fail())
 	{
 		std::cout << "int: " << value << std::endl;
 	}
@@ -50,11 +52,12 @@ void print_int(const std::string &literal)
 void print_float(const std::string &literal)
 {
 	std::istringstream iss(literal);
-	
+
 	float value;
-	if (iss >> value)
+	iss >> value;
+	if (iss.eof() && !iss.fail())
 	{
-		std::cout << "float: " << value << ".0f" << std::endl;
+		std::cout << "float: " << value << ((literal.find('.') == std::string::npos)? ".0f" : "f") << std::endl;
 	}
 	else
 	{
@@ -65,11 +68,12 @@ void print_float(const std::string &literal)
 void print_double(const std::string &literal)
 {
 	std::istringstream iss(literal);
-	
+
 	double value;
-	if (iss >> value)
+	iss >> value;
+	if (iss.eof() && !iss.fail())
 	{
-		std::cout << "double: " << value << ".0" << std::endl;
+		std::cout << "double: " << value << ((literal.find('.') == std::string::npos)? ".0" : "") << std::endl;
 	}
 	else
 	{
