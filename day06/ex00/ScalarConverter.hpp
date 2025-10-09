@@ -9,13 +9,14 @@
 
 class ScalarConverter
 {
-public:
-	ScalarConverter();
-	ScalarConverter(const ScalarConverter &other);
-	~ScalarConverter();
-	ScalarConverter &operator=(const ScalarConverter &other);
+	private :
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+	public:
+		~ScalarConverter();
+		ScalarConverter &operator=(const ScalarConverter &other);
 
-	static void convert(const std::string &literal);
+		static void convert(const std::string &literal);
 };
 
 

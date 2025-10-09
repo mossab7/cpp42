@@ -5,15 +5,15 @@
 
 struct Data
 {
-    private:
-        int data;
-    public:
-        Data();
-        Data(int val);
-        ~Data();
-        static Data *createData(int val);
-        int getData();
+private:
+	int data;
+	Data();
+	Data(int val);
+
+public:
+	~Data();
+	static Data *createData(int val);
+	int getData();
 };
 
 #endif // DATA_HPP
-

@@ -17,6 +17,11 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 
 void print_char(const std::string &literal)
 {
+	if (literal.size() == 1 && isalpha(literal[0]))
+	{
+		std::cout << "char: '" << literal[0] << "'" << std::endl;
+		return;
+	}
 	std::istringstream iss(literal);
 	int value;
 
@@ -33,11 +38,20 @@ void print_char(const std::string &literal)
 	return;
 }
 
-void print_int(const std::string &literal)
+void print_int(const std::string &temp)
 {
+	std::string literal = temp;
+	int value;
+	if (literal.size() == 1 && isalpha(literal[0]))
+	{
+		value = static_cast<int>(literal[0]);
+		std::cout << "int: " << value << std::endl;
+		return;
+	}
+	if (literal[literal.size() - 1] == 'f')
+		literal.erase(literal.size() - 1);
 	std::istringstream iss(literal);
 
-	int value;
 	iss >> value;
 	if (iss.eof() && !iss.fail())
 	{
@@ -49,11 +63,25 @@ void print_int(const std::string &literal)
 	}
 }
 
-void print_float(const std::string &literal)
+void print_float(const std::string &temp)
 {
+	std::string literal = temp;
+	float value;
+	if (literal.size() == 1 && isalpha(literal[0]))
+	{
+		value = static_cast<float>(literal[0]);
+		std::cout << "float: " << value << ".0f" << std::endl;
+		return;
+	}
+	if (temp == "+inf" || temp == "-inf" || temp == "inf")
+	{
+		std::cout << "float : " << temp << "f" << std::endl;
+		return;
+	}
+	if (literal[literal.size() - 1] == 'f')
+		literal.erase(literal.size() - 1);
 	std::istringstream iss(literal);
 
-	float value;
 	iss >> value;
 	if (iss.eof() && !iss.fail())
 	{
@@ -65,11 +93,25 @@ void print_float(const std::string &literal)
 	}
 }
 
-void print_double(const std::string &literal)
+void print_double(const std::string &temp)
 {
+	std::string literal = temp;
+	double value;
+	if (literal.size() == 1 && isalpha(literal[0]))
+	{
+		value = static_cast<double>(literal[0]);
+		std::cout << "double: " << value << ".0" << std::endl;
+		return;
+	}
+	if (temp == "+inf" || temp == "-inf" || temp == "inf")
+	{
+		std::cout << "double : " << temp << std::endl;
+		return;
+	}
+	if (literal[literal.size() - 1] == 'f')
+		literal.erase(literal.size() - 1);
 	std::istringstream iss(literal);
 
-	double value;
 	iss >> value;
 	if (iss.eof() && !iss.fail())
 	{

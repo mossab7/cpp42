@@ -11,14 +11,15 @@ typedef unsigned long long uintptr_t;
 
 class Serialization
 {
-public:
-	Serialization();
-	Serialization(const Serialization &other);
-	~Serialization();
-	Serialization &operator=(const Serialization &other);
+	private:
+		Serialization();
+		Serialization(const Serialization &other);
+	public:
+		~Serialization();
+		Serialization &operator=(const Serialization &other);
 
-	static uintptr_t serialize(Data *ptr);
-	static Data *deserialize(uintptr_t raw);
+		static uintptr_t serialize(Data *ptr);
+		static Data *deserialize(uintptr_t raw);
 };
 
 

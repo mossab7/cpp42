@@ -1,9 +1,24 @@
 #include "IdentifyRealType.hpp"
 
+Base::Base() {}
+
+Base::Base(const Base &other)
+{
+	(void)other;
+}
+
+Base &Base::operator=(const Base &other)
+{
+	(void)other;
+	return (*this);
+}
+
+Base::~Base() {}
+
 Base *Base::generate()
 {
     srand(time(NULL));
-	int random = rand() % 3;
+	static int random = rand() % 3;
 	if (random == 0)
 		return new A();
 	else if (random == 1)
@@ -28,7 +43,7 @@ void Base::identify(Base &p) const
 {
 	try
 	{
-		dynamic_cast<A &>(p);
+		(void)dynamic_cast<A &>(p);
 		std::cout << "A" << std::endl;
 		return;
 	}
@@ -38,7 +53,7 @@ void Base::identify(Base &p) const
 
 	try
 	{
-		dynamic_cast<B &>(p);
+		(void)dynamic_cast<B &>(p);
 		std::cout << "B" << std::endl;
 		return;
 	}
@@ -47,7 +62,7 @@ void Base::identify(Base &p) const
 	}
 	try
 	{
-		dynamic_cast<C &>(p);
+		(void)dynamic_cast<C &>(p);
 		std::cout << "C" << std::endl;
 		return;
 	}
