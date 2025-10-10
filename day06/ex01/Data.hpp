@@ -11,6 +11,8 @@ struct Data
         Data();
         Data(int val);
         ~Data();
+        Data(const Data &other);
+        Data &operator=(const Data &other);
         static Data *createData(int val);
         int getData();
 };

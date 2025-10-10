@@ -17,3 +17,14 @@ int Data::getData(void)
 {
     return data;
 }
+
+Data::Data(const Data &other) : data(other.data) {}
+
+Data &Data::operator=(const Data &other) 
+{
+    if (this != &other) 
+    {
+        data = other.data;
+    }
+    return *this;
+}

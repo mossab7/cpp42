@@ -9,13 +9,14 @@
 class Base
 {
 public:
+	Base() {}
+	Base(const Base &other) {}
+	Base &operator=(const Base &other) { return *this; }
 	virtual ~Base() {}
 	void identify(Base *p) const;
 	void identify(Base &p) const;
 	static Base *generate();
 };
-
-
 
 class A : public Base
 {
