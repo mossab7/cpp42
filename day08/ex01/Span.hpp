@@ -19,7 +19,7 @@ public:
 	~Span();
 	void addNumber(int num);
 	template <typename T>
-	void addNumber(T begin, T end);
+	void addNumbers(T begin, T end);
 	void addRange(int range);
 	int shortestSpan();
 	int longestSpan();
@@ -27,7 +27,7 @@ public:
 };
 
 template <typename T>
-void Span::addNumber(T begin, T end)
+void Span::addNumbers(T begin, T end)
 {
 	while (begin != end)
 	{

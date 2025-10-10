@@ -10,8 +10,24 @@ int main()
 	vec.push_back(46);
 	vec.push_back(49);
 	vec.push_back(35);
+
+	{
+		Span temp = sp;
+		Span copy(sp);
+		try 
+		{
+			copy.shortestSpan();
+			temp.shortestSpan();
+			copy.longestSpan();
+			temp.longestSpan();	
+		}
+		catch(std::exception &err){
+			std::cerr << err.what() << std::endl;
+		}
+	}
+
 	try {
-		sp.addNumber(vec.begin(),vec.end());
+		sp.addNumbers(vec.begin(),vec.end());
 	}
 	catch(std::exception &err){
 		std::cerr << err.what() << std::endl;
@@ -28,6 +44,22 @@ int main()
 	catch(std::exception &err){
 		std::cout << err.what() << std::endl;
 	}
+
+	{
+		Span temp = sp;
+		Span copy(sp);
+		try 
+		{
+			std::cout << "From copy " << copy.shortestSpan() << std::endl;
+			std::cout << "From temp " << temp.shortestSpan() << std::endl;
+			std::cout << "From copy " << copy.longestSpan() << std::endl;
+			std::cout << "From temp " << temp.longestSpan() << std::endl;
+		}
+		catch(std::exception &err){
+			std::cerr << err.what() << std::endl;
+		}
+	}
+
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	return (0);
