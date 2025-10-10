@@ -1,6 +1,9 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#define GRADE_MIN 150
+#define GRADE_MAX 1
+
 #include <iostream>
 #include <string>
 

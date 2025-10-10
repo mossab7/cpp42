@@ -4,9 +4,9 @@
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
 	: name(name), grade(grade)
 {
-	if (grade < 1)
+	if (grade < GRADE_MAX)
 		throw GradeTooHighException("Grade too high for : " + name);
-	if (grade > 150)
+	if (grade > GRADE_MIN)
 		throw GradeTooLowException("Grade too low for : " + name);
 }
 
@@ -39,14 +39,14 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (grade <= 1)
+	if (grade <= GRADE_MAX)
 		throw GradeTooHighException("Cannot increment grade above 1");
 	--grade;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (grade >= 150)
+	if (grade >= GRADE_MIN)
 		throw GradeTooLowException("Cannot decrement grade below 150");
 	++grade;
 }
@@ -67,7 +67,7 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 	return os;
 }
 
-void Bureaucrat::SignForm(Form &form) 
+void Bureaucrat::SignForm(Form &form)
 {
 	try
 	{

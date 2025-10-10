@@ -13,8 +13,8 @@ $(NAME) : $(SRCS) $(HEADER)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean :
-	$(RM) $(NAME)
 
 fclean : clean
+	$(RM) $(NAME)
 
 re : fclean all
