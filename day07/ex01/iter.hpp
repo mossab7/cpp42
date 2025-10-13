@@ -1,5 +1,5 @@
-#ifndef ITER_TPP
-#define ITER_TPP
+#ifndef ITER_HPP
+#define ITER_HPP
 
 #include <iostream>
 
@@ -14,4 +14,4 @@ void iter(T &arr, size_t size, F f)
 	}
 }
 
-#endif // ITER_TPP
+#endif // ITER_HPP

@@ -3,6 +3,7 @@
 #include <vector>
 #include <stack>
 #include <cstddef>
+
 int main(void)
 {
 	std::vector<int> vec;
