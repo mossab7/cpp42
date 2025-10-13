@@ -72,7 +72,6 @@ std::map<std::string, float> BitcoinExchange::readToMap(std::string &file, char 
 		return input;
 	}
 
-	// Skip header line
 	getline(iFile, line);
 	
 	while (getline(iFile, line)) {
