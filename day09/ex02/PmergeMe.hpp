@@ -33,7 +33,7 @@ private:
     std::deque<int> deqExtractWinners(const std::deque<Pair> &pairs);
 
     template <typename T>
-    size_t lowerBoundCount(const T &arr, int value);
+    size_t lowerBoundCount(const T &arr, int value, int winner);
 
     std::vector<int> vecSortWinners(const std::vector<int> &winners);
     std::deque<int> deqSortWinners(const std::deque<int> &winners);
@@ -55,11 +55,10 @@ public:
     static long long currentTimeMicro();
 };
 
-// Template method definition must stay in header
 template <typename T>
-size_t FordJohnson::lowerBoundCount(const T &arr, int value)
+size_t FordJohnson::lowerBoundCount(const T &arr, int value, int winner)
 {
-    size_t low = 0, high = arr.size();
+    size_t low = 0, high = find(arr.begin(), arr.end(), winner) - arr.begin();
     while (low < high)
     {
         size_t mid = (low + high) / 2;

@@ -184,7 +184,7 @@ std::vector<int> FordJohnson::vecMerge(const std::vector<int> &sortedWinners, co
         if (!inserted[idx])
         {
             int val = losers[idx];
-            size_t pos = lowerBoundCount(result, val);
+            size_t pos = lowerBoundCount(result, val, pairs[idx].winner);
             result.insert(result.begin() + pos, val);
             inserted[idx] = true;
         }
@@ -195,7 +195,7 @@ std::vector<int> FordJohnson::vecMerge(const std::vector<int> &sortedWinners, co
         if (!inserted[i])
         {
             int val = losers[i];
-            size_t pos = lowerBoundCount(result, val);
+            size_t pos = lowerBoundCount(result, val, pairs[i].winner);
             result.insert(result.begin() + pos, val);
             inserted[i] = true;
         }
@@ -203,7 +203,7 @@ std::vector<int> FordJohnson::vecMerge(const std::vector<int> &sortedWinners, co
 
     if (hasUnpaired)
     {
-        size_t pos = lowerBoundCount(result, unpaired);
+        size_t pos = lowerBoundCount(result, unpaired, pairs.back().winner);
         result.insert(result.begin() + pos, unpaired);
     }
 
@@ -229,7 +229,7 @@ std::deque<int> FordJohnson::deqMerge(const std::deque<int> &sortedWinners, cons
         if (!inserted[idx])
         {
             int val = losers[idx];
-            size_t pos = lowerBoundCount(result, val);
+            size_t pos = lowerBoundCount(result, val, pairs[idx].winner);
             result.insert(result.begin() + pos, val);
             inserted[idx] = true;
         }
@@ -240,7 +240,7 @@ std::deque<int> FordJohnson::deqMerge(const std::deque<int> &sortedWinners, cons
         if (!inserted[i])
         {
             int val = losers[i];
-            size_t pos = lowerBoundCount(result, val);
+            size_t pos = lowerBoundCount(result, val, pairs[i].winner);
             result.insert(result.begin() + pos, val);
             inserted[i] = true;
         }
@@ -248,7 +248,7 @@ std::deque<int> FordJohnson::deqMerge(const std::deque<int> &sortedWinners, cons
 
     if (hasUnpaired)
     {
-        size_t pos = lowerBoundCount(result, unpaired);
+        size_t pos = lowerBoundCount(result, unpaired, pairs.back().winner);
         result.insert(result.begin() + pos, unpaired);
     }
 
@@ -308,7 +308,7 @@ void FordJohnson::sort(const std::vector<int> &vec, const std::deque<int> &deq)
     
     std::cout << "Time to process a range of " << vec.size() 
               << " elements with std::vector : " 
-              << (end - start) << " ms" << std::endl;
+              << (end - start) << " ms" << " " << comparisonCount <<  std::endl;
 
               resetCount();
     start = currentTimeMicro();
@@ -317,7 +317,7 @@ void FordJohnson::sort(const std::vector<int> &vec, const std::deque<int> &deq)
     
     std::cout << "Time to process a range of " << deq.size() 
               << " elements with std::deque : " 
-              << (end - start) << " ms" << std::endl;
+              << (end - start) << " ms" << " " << comparisonCount <<  std::endl;
 }
 /*----------------------sort entry point----------------------*/
 

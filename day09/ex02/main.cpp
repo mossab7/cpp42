@@ -3,8 +3,8 @@
 int main() 
 {
     std::vector<int> arr;
-    for (int i = 0; i < 100000; ++i)
-        arr.push_back(rand());
+    for (int i = 100; i > 0; --i)
+        arr.push_back(rand() % 10000);
     arr.push_back(8);
     arr.push_back(3);
     arr.push_back(5);
