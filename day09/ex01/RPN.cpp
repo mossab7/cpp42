@@ -24,24 +24,24 @@ int evaluate(std::string &exp)
 
 			switch (*it)
 			{
-			case '*':
-				right *= left;
-				break;
-			case '-':
-				right -= left;
-				break;
-			case '+':
-				right += left;
-				break;
-			case '/':
-				if (left == 0)
-				{
-					throw (std::invalid_argument("can't divide by 0"));
-				}
-				right /= left;
-				break;
-			default:
-				throw (std::invalid_argument("Invalid operator"));
+				case '*':
+					right *= left;
+					break;
+				case '-':
+					right -= left;
+					break;
+				case '+':
+					right += left;
+					break;
+				case '/':
+					if (left == 0)
+					{
+						throw (std::invalid_argument("can't divide by 0"));
+					}
+					right /= left;
+					break;
+				default:
+					throw (std::invalid_argument("Invalid operator"));
 			}
 			s.push(right);
 		}
@@ -49,7 +49,7 @@ int evaluate(std::string &exp)
 
 	if (s.size() != 1)
 	{
-		throw (std::invalid_argument("Invalid expression\n"));
+		throw (std::invalid_argument("Invalid expression"));
 	}
 
 	return s.top();
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	try {
-		std::cout << evaluate(exp) << std::endl;
+		std::cout << "result : "  << evaluate(exp) << std::endl;
 	}
 	catch(std::exception &err)
 	{
