@@ -1,20 +1,34 @@
 #include "PmergeMe.hpp"
 
-int main()
+bool isNumber(char *s)
 {
-	std::vector<int> arr;
-	for (int i = 0; i < 10000; ++i)
-		arr.push_back(rand() % 10000);
-	arr.push_back(8);
-	arr.push_back(3);
-	arr.push_back(5);
-	arr.push_back(1);
-	arr.push_back(7);
-	arr.push_back(4);
-	arr.push_back(6);
+	while (*s)
+	{
+		if (!isdigit(*s))
+			return (false);
+		s++;
+	}
+	return (true);
+}
 
+int main(int ac, char *av[])
+{
+	if (ac < 2)
+	{
+		std::cerr << "usage : ./PmergeMe n numbers to be sorted" << std::endl;
+		return (0);
+	}
+	std::vector<int> arr(ac - 1);
+	for (int i = 1; i < ac; i++)
+	{
+		if (!isNumber(av[i]))
+		{
+			std::cerr  << "\"" << av[i] << "\"" <<" is not a number" << std::endl;
+			return (0);
+		}
+		arr[i - 1] = atoi(av[i]);
+	}
 	FordJohnson fj;
 	fj.sort(arr, std::deque<int>(arr.begin(), arr.end()));
 	return 0;
-
 }

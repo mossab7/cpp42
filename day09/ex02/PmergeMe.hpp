@@ -29,8 +29,8 @@ private:
 	std::vector<Pair> vecCreatePairs(const std::vector<int> &v, bool &hasUnpaired, int &unpaired);
 	std::deque<Pair> deqCreatePairs(const std::deque<int> &v, bool &hasUnpaired, int &unpaired);
 
-	std::vector<int> FordJohnson::vecExtractWinners(const std::vector<Pair> &pairs);
-	std::deque<int> FordJohnson::deqExtractWinners(const std::deque<Pair> &pairs);
+	std::vector<int> vecExtractWinners(const std::vector<Pair> &pairs);
+	std::deque<int> deqExtractWinners(const std::deque<Pair> &pairs);
 
 	std::vector<int> vecSortWinners(const std::vector<int> &winners);
 	std::deque<int> deqSortWinners(const std::deque<int> &winners);
